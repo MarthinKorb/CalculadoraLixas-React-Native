@@ -28,9 +28,9 @@ export default function Calculadora() {
   }
 
   const LimparCampos = () =>{
-    if(this.comprimento === ''){
-      Alert.alert('Aviso', 'O comprimento da lixa deve ser informado');
-    }
+    // if(){
+      Alert.alert('Aviso', '');
+    //}
   }
 
   return (

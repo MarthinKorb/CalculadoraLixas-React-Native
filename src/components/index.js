@@ -19,43 +19,35 @@ export default function Calculadora() {
 
   const Calcular = () => {
 
-    if (comprimento) {
-      if (largura) {
-        if (precoMetro) {
-          //calculando o número mínimo de peças peças para o pedido
-          ped_minimo = (300 / largura);
-          //Arredondando para baixo a quantidade mínima para o pedido
-          ped_minimo = Math.floor(ped_minimo);
+    if (comprimento && largura && precoMetro) {
+       //calculando o número mínimo de peças peças para o pedido
+       ped_minimo = (300 / largura);
+       //Arredondando para baixo a quantidade mínima para o pedido
+       ped_minimo = Math.floor(ped_minimo);
 
-          //calculando o valor das lixas
-          preco_unit = (precoMetro * (comprimento * 0.001));
-          preco_unit = preco_unit + preco_unit * (0.1);
+       //calculando o valor das lixas
+       preco_unit = (precoMetro * (comprimento * 0.001));
+       preco_unit = preco_unit + preco_unit * (0.1);
 
-          //Calculando o preço unitário das lixas
-          preco_unit = preco_unit / Math.round(ped_minimo);
-          preco_unit = preco_unit.toFixed(2);
+       //Calculando o preço unitário das lixas
+       preco_unit = preco_unit / Math.round(ped_minimo);
+       preco_unit = preco_unit.toFixed(2);
 
-          setResultado(preco_unit);
-          setPedidoMinimo(ped_minimo);
+       setResultado(preco_unit);
+       setPedidoMinimo(ped_minimo);
 
-          if (resultado && pedidoMinimo) {
-            setCampoResultado(resultado.toString());
-            setCampoPedMinino(pedidoMinimo.toString());
+       if (resultado && pedidoMinimo) {
+         setCampoResultado(resultado.toString());
+         setCampoPedMinino(pedidoMinimo.toString());
 
-          } else {
-            setCampoResultado("");
-            setCampoPedMinino("");
-          }
-        } else {
-          Alert.alert('Aviso', 'Todos os campos devem ser preenchidos');
-        }
-      } else {
-        Alert.alert('Aviso', 'Todos os campos devem ser preenchidos');
-      }
-    } else {
-      Alert.alert('Aviso', 'Todos os campos devem ser preenchidos');
+       } else {
+         setCampoResultado("");
+         setCampoPedMinino("");
+       }
+    }else{
+      Alert.alert('Aviso', 'Todos os campos devem ser preenchidos.')
     }
-
+   
   }
 
   const LimparCampos = () => {

@@ -24,35 +24,38 @@ export default StyleSheet.create({
     },
 
     calcText: {
-        fontSize: 20,
+        fontSize: 14,
         fontWeight: 'bold',
-        marginBottom: 20,
+        marginBottom: 10,
+        marginTop: 8,
         color: '#e02041'
     },
 
     input: { 
         borderWidth: 1,
         borderColor: '#777',
-        marginBottom: 25,
+        marginBottom: 10,
         borderRadius: 5,
-        padding: 10,
+        padding: 8,
         backgroundColor: '#fff',
         color: '#e02041',
         fontSize: 16,
     },
 
     result: {
-        justifyContent: 'center',
-        alignItems: 'center',
+        backgroundColor: '#fff',
+        textAlign: 'center',  
+        padding: 8,      
         color: '#e02041',
         fontSize: 22,
-        marginLeft: 150,
         fontWeight: 'bold',
+        borderRadius: 8,
+        marginTop: 10
     },
 
     button: {
         borderWidth: 1,
-        marginTop: 130,
+        marginTop: 50,
         padding: 10,
         borderRadius: 5,   
         borderColor: '#777',   

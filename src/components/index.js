@@ -9,52 +9,65 @@ export default function Calculadora() {
   const [largura, setLargura] = useState(0);
   const [precoMetro, setPrecoMetro] = useState(0);
   const [resultado, setResultado] = useState(0);
+  const [pedidoMinimo, setPedidoMinimo] = useState(0);
 
   const [campoResultado, setCampoResultado] = useState("");
+  const [campoPedMinimo, setCampoPedMinino] = useState("");
 
   var preco_unit;
-  var ped_minimo;
+  var ped_minimo = null;
 
   const Calcular = () => {
 
-    //setResultado(parseInt(comprimento) + parseInt(largura));
+    if (comprimento) {
+      if (largura) {
+        if (precoMetro) {
+          //calculando o número mínimo de peças peças para o pedido
+          ped_minimo = (300 / largura);
+          //Arredondando para baixo a quantidade mínima para o pedido
+          ped_minimo = Math.floor(ped_minimo);
 
-    //calculando o número mínimo de peças peças para o pedido
-    ped_minimo = (300 / largura);
-    //Arredondando para baixo a quantidade mínima para o pedido
-    ped_minimo = Math.floor(ped_minimo);
+          //calculando o valor das lixas
+          preco_unit = (precoMetro * (comprimento * 0.001));
+          preco_unit = preco_unit + preco_unit * (0.1);
 
-    //calculando o valor das lixas
-    preco_unit = (precoMetro * (comprimento * 0.001));                            
-    preco_unit = preco_unit + preco_unit * (0.1);
+          //Calculando o preço unitário das lixas
+          preco_unit = preco_unit / Math.round(ped_minimo);
+          preco_unit = preco_unit.toFixed(2);
 
-    //Calculando o preço unitário das lixas
-    preco_unit = preco_unit / Math.round(ped_minimo);
+          setResultado(preco_unit);
+          setPedidoMinimo(ped_minimo);
 
-    setResultado(preco_unit);
-    
-   
+          if (resultado && pedidoMinimo) {
+            setCampoResultado(resultado.toString());
+            setCampoPedMinino(pedidoMinimo.toString());
 
-    if (resultado) {
-
-      setCampoResultado(resultado.toString());
-
+          } else {
+            setCampoResultado("");
+            setCampoPedMinino("");
+          }
+        } else {
+          Alert.alert('Aviso', 'Todos os campos devem ser preenchidos');
+        }
+      } else {
+        Alert.alert('Aviso', 'Todos os campos devem ser preenchidos');
+      }
     } else {
-      setCampoResultado("");
+      Alert.alert('Aviso', 'Todos os campos devem ser preenchidos');
     }
-    console.log(campoResultado);
-    // Alert.alert("Resultado", `Valor total da Lixa ${resultado} `);
+
   }
 
   const LimparCampos = () => {
-    if (largura != '' || comprimento != '' || precoMetro != '') {
+    if (largura != '' || comprimento != '' || precoMetro != '' || campoPedMinimo != '' || campoResultado != '') {
       setComprimento('');
       setLargura('');
       setPrecoMetro('');
       setCampoResultado('');
+      setCampoPedMinino('');
       setResultado('');
     } else {
-      Alert.alert('Aviso', 'Os campos já estão vazios.');
+      Alert.alert('Aviso', 'Os campos estão vazios.');
     }
   }
 
@@ -104,6 +117,10 @@ export default function Calculadora() {
           //onChangeText={(value) => setLargura(value)}
           value={precoMetro}
         />
+
+        <Text
+          style={styles.result}
+        >Quantidade mínima: {campoPedMinimo} peças</Text>
 
         <Text
           style={styles.result}

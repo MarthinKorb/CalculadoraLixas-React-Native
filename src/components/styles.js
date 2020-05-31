@@ -39,7 +39,7 @@ export default StyleSheet.create({
         padding: 8,
         backgroundColor: '#fff',
         color: '#e02041',
-        fontSize: 16,
+        fontSize: 14,
     },
 
     result: {
@@ -47,7 +47,7 @@ export default StyleSheet.create({
         textAlign: 'center',  
         padding: 8,      
         color: '#e02041',
-        fontSize: 22,
+        fontSize: 14,
         fontWeight: 'bold',
         borderRadius: 8,
         marginTop: 10
@@ -76,7 +76,7 @@ export default StyleSheet.create({
     },
 
     buttonText: {
-        fontSize: 17,
+        fontSize: 14,
         fontWeight: 'bold',
         color: '#fff'        
     },
